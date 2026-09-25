@@ -25,6 +25,7 @@ DEFAULT_SETTINGS = {
     'any2video_dir': os.path.join(CURRENT_DIR, "outputs/any2video/"),
     'upscale_dir': os.path.join(CURRENT_DIR, "outputs/upscale/"),
     'def_type': "Default",
+    'def_model_tab': "checkpoint",
     'def_lora_strength': 1.0,
     'def_sampling': "euler_a",
     'def_steps': 20,
@@ -39,8 +40,8 @@ DEFAULT_SETTINGS = {
     'def_seed': -1,
     'def_clip_skip': -1,
     'def_batch_count': 1,
-    'def_rng': "cuda",
-    'def_sampler_rng': "cuda",
+    'def_rng': "Default",
+    'def_sampler_rng': "Default",
     'def_predict': "Default",
     'def_lora_apply': "auto",
     'def_output': "",
@@ -63,9 +64,22 @@ DEFAULT_SETTINGS = {
     'def_scm_policy': "none",
     'def_threads': 0,
     'def_max_vram': 0,
-    'def_offload_to_cpu': False,
-    'def_vae_cpu': False,
-    'def_clip_cpu': False,
+    'def_backend_table': [
+        ["primary", "default"],
+        ["diffusion", "default"],
+        ["te", "default"],
+        ["vae", "default"],
+        ["controlnet", "default"]
+    ],
+    'def_params_backend_table': [
+        ["primary", "default"],
+        ["diffusion", "default"],
+        ["te", "default"],
+        ["vae", "default"],
+        ["controlnet", "default"]
+    ],
+    'def_stream_layers': False,
+    'def_eager_load': False,
     'def_flash_attn': False,
     'def_diffusion_fa': False,
     'def_diffusion_conv_direct': False,
@@ -99,6 +113,7 @@ class ConfigManager:
         'def_taesd': 'taesd_dir',
         'def_phtmkr': 'phtmkr_dir',
         'def_cnnet': 'cnnet_dir',
+        'def_uncond_unet': 'unet_dir',
         'def_t5xxl': 'txt_enc_dir',
         'def_clip_l': 'txt_enc_dir',
         'def_clip_g': 'txt_enc_dir',
@@ -106,6 +121,7 @@ class ConfigManager:
         'def_umt5_xxl': 'txt_enc_dir',
         'def_emb_connect': 'txt_enc_dir',
         'def_llm': 'txt_enc_dir',
+        'def_llm_vision': 'txt_enc_dir',
     }
 
     def __init__(self, config_path: str = None):
